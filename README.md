@@ -11,6 +11,7 @@ configuration/template to spawn additional projects.
 * Webpacker
 * StimulusJS
 * Bootstrap with Material
+* RSpec testing
 
 ## Missing
 
