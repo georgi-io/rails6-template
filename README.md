@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the YARoRA: Yet Another Ruby on Rails Application.
 
-Things you may want to cover:
+It is built on the Rails v6.1 and utilizes Bootstrap/Material via Webpacker. It should be a nice little
+configuration/template to spawn additional projects.
 
-* Ruby version
+## Done
 
-* System dependencies
+* Basic Application
+* Webpacker
+* StimulusJS
+* Bootstrap with Material
 
-* Configuration
+## Missing
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Authentication and Authorization
