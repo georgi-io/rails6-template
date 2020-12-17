@@ -15,7 +15,7 @@ module Auth0Helper
   end
 
   def username
-    session[:userinfo]['info']['name']
+    logged_in? ? session[:userinfo]['info']['name'] : nil
   end
 
   private
