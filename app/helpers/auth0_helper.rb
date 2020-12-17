@@ -18,6 +18,10 @@ module Auth0Helper
     logged_in? ? session[:userinfo]['info']['name'] : nil
   end
 
+  def gravatar_image
+    logged_in? ? session[:userinfo]['info']['image'] : nil
+  end
+
   private
 
   def to_query(hash)

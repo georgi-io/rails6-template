@@ -1,15 +1,1 @@
-<div class="jumbotron">
-  <h1 class="display-4">Hello, world!</h1>
-  <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or
-    information.</p>
-  <blockquote class="blockquote text-right">
-    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-    <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-  </blockquote>
-  <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  <br>
-  <br>
-
-  <%= session[:userinfo].inspect if session[:userinfo].present? %>
-</div>
+<%= session[:userinfo].inspect if logged_in? %>

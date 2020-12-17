@@ -45,3 +45,14 @@ html {
     padding-left: $textfield-box-padding-x;
   }
 }
+
+.navbar {
+  .gravatar {
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid $material-color-purple-200;
+    margin-left: 10px;
+  }
+}

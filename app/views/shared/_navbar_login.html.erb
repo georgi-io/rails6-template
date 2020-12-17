@@ -1,5 +1,7 @@
 <%= button_to 'Login', 'auth/auth0', method: :post, class: "btn btn-primary" unless logged_in? %>
 <% if logged_in? %>
-  Hello <%= username %>
-  <%= button_to 'Logout', auth0_logout_path, method: :get, class: "btn btn-primary" %>
+  <%= username %>
+  <%= link_to auth0_logout_url do %>
+    <%= image_tag gravatar_image, class: 'gravatar' %>
+  <% end %>
 <% end %>
