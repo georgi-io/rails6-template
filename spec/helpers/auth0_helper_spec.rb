@@ -1,37 +1,28 @@
 require 'rails_helper'
 
 RSpec.describe Auth0Helper, type: :helper do
-  describe 'logged_in?' do
-    it 'returns true if session[:userinfo] is present' do
-      session[:userinfo] = 'test'
-      expect(helper.logged_in?).to be_truthy
+  describe '#current_user' do
+    it 'returns a user when id in session' do
+      user = LocalUser.create!(name: 'Sebastian Georgi', email: 'sebastian@georgi.io', auth0_id: SecureRandom.uuid)
+      session[:user_id] = user.id
+      expect(helper.current_user.id).to eq user.id
     end
 
-    it 'returns false if no session[:userinfo] is present' do
-      expect(helper.logged_in?).to be_falsey
-    end
-  end
-
-  describe 'username' do
-    it 'returns the username from session[:userinfo]' do
-      session[:userinfo] = { 'info' => { 'name' => 'username' } }
-      expect(helper.username).to eq('username')
-    end
-
-    it 'return nil with no session' do
-      expect(helper.username).to be_nil
+    it 'returns nil if no session[:user_id] is present' do
+      expect(helper.current_user).to be_nil
     end
   end
 
-  describe 'gravatar_image' do
-    it 'returns the gravatar_url from session[:userinfo]' do
+  describe '#user_gravatar' do
+    it 'returns the gravatar_url from session[:user_gravatar]' do
       url = 'https://gravatar.com/test.jpg'
-      session[:userinfo] = { 'info' => { 'name' => 'username', 'image' => url } }
-      expect(helper.gravatar_image).to eq(url)
+      session[:user_id] = 1
+      session[:user_gravatar] = url
+      expect(helper.user_gravatar).to eq(url)
     end
 
     it 'return nil with no session' do
-      expect(helper.gravatar_image).to be_nil
+      expect(helper.user_gravatar).to be_nil
     end
   end
 end

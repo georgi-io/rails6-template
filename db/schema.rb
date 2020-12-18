@@ -19,10 +19,11 @@ ActiveRecord::Schema.define(version: 2020_12_18_105038) do
   create_table "local_users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.uuid "auth0_id"
+    t.string "auth0_id"
     t.datetime "last_seen"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["auth0_id"], name: "index_local_users_on_auth0_id", unique: true
   end
 
 end

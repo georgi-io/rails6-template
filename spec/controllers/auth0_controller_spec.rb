@@ -4,10 +4,14 @@ RSpec.describe Auth0Controller, type: :controller do
   include Auth0Helper
 
   describe 'GET callback' do
-    before(:each) { request.env['omniauth.auth'] = OmniAuth.config.mock_auth }
-    it 'sets session[:userinfo] with omniauth.auth request.env' do
+    before(:each) {
+      mock_auth = OmniAuth.config.mock_auth
+      mock_auth[:default]['info']['email'] = 'sebastian@georgi.io'
+      request.env['omniauth.auth'] = mock_auth[:default]
+    }
+    it 'sets session[:user_id] with something' do
       get :callback
-      expect(session[:userinfo]).to eq(OmniAuth.config.mock_auth)
+      expect(session[:user_id]).not_to be_nil
     end
 
     it 'redirects to :application_index' do
@@ -19,9 +23,9 @@ RSpec.describe Auth0Controller, type: :controller do
   describe 'GET logout' do
     let(:logout_url_string) { logout_url.to_s }
     it 'resets the session' do
-      session[:userinfo] = 'bla'
+      session[:user_id] = '1'
       get :logout
-      expect(session[:userinfo]).to be_nil
+      expect(session[:user_id]).to be_nil
     end
 
     it 'redirects to Auth0 logout' do

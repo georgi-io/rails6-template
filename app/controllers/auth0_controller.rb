@@ -2,11 +2,12 @@ class Auth0Controller < ApplicationController
   include Auth0Helper
 
   def callback
-    # This stores all the user information that came from Auth0
-    # and the IdP
-    session[:userinfo] = request.env['omniauth.auth']
-
-    # Redirect to the URL you want after successful auth
+    session[:user_id] = LocalUser.upsert_from_auth(
+      request.env['omniauth.auth']['uid'],
+      request.env['omniauth.auth']['info']['name'],
+      request.env['omniauth.auth']['info']['email']
+    ).id
+    session[:user_gravatar] = request.env['omniauth.auth']['info']['image']
     redirect_to application_index_path
   end
 
