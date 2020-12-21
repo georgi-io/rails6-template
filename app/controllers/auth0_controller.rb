@@ -20,4 +20,8 @@ class Auth0Controller < ApplicationController
     reset_session
     redirect_to logout_url.to_s
   end
+
+  def secured
+    redirect_to application_index_path unless logged_in?
+  end
 end

@@ -1,8 +1,8 @@
 <ul class="navbar-nav mr-auto">
   <li class="nav-item">
-    <%= link_to 'Login', 'auth/auth0', method: :post, class: "nav-link" unless current_user %>
+    <%= link_to 'Login', 'auth/auth0', method: :post, class: "nav-link" unless logged_in? %>
   </li>
-  <% if current_user %>
+  <% if logged_in? %>
     <li class="nav-item">
       <div class="dropdown dropleft">
         <%= image_tag user_gravatar, class: 'gravatar', 'aria-expand': false, 'aria-haspopup': true, 'data-toggle': 'dropdown', id: 'dropdownMenuButton1' %>

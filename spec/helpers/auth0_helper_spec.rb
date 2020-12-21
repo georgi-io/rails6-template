@@ -1,6 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Auth0Helper, type: :helper do
+  describe '#logged_in?' do
+    it 'returns false' do
+      expect(helper.logged_in?).to be_falsey
+    end
+
+    it 'returns true if session[:user_id] is present' do
+      session[:user_id] = 123
+      expect(helper.logged_in?).to be_truthy
+    end
+  end
+
   describe '#current_user' do
     it 'returns a user when id in session' do
       user = LocalUser.create!(name: 'Sebastian Georgi', email: 'sebastian@georgi.io', auth0_id: SecureRandom.uuid)

@@ -10,6 +10,10 @@ module Auth0Helper
     URI::HTTPS.build(host: domain, path: '/v2/logout', query: to_query(request_params))
   end
 
+  def logged_in?
+    session[:user_id].present?
+  end
+
   def current_user
     session[:user_id].nil? ? nil : LocalUser.where(id: session[:user_id]).first
   end

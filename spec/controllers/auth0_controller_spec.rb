@@ -33,4 +33,17 @@ RSpec.describe Auth0Controller, type: :controller do
       expect(response).to redirect_to(logout_url_string)
     end
   end
+
+  describe 'GET secured' do
+    it 'redirects to /' do
+      get :secured
+      expect(response).to redirect_to(application_index_path)
+    end
+
+    it 'returns 200 if logged in' do
+      session[:user_id] = 123
+      get :secured
+      expect(response).to have_http_status(:ok)
+    end
+  end
 end
