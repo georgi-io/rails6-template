@@ -12,7 +12,8 @@ configuration/template to spawn additional projects.
 * StimulusJS
 * Bootstrap with Material
 * RSpec testing
+* Authentication and Authorization
 
 ## Missing
 
-* Authentication and Authorization
+
