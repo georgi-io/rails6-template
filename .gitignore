@@ -43,3 +43,5 @@ yarn-debug.log*
 /config/credentials/test.key
 /.idea/dataSources.local.xml
 /.idea/dataSources.xml
+
+/config/credentials/production.key
