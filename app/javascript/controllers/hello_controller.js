@@ -7,12 +7,13 @@
 //   <h1 data-target="hello.output"></h1>
 // </div>
 
-import { Controller } from "stimulus"
+import { Controller } from 'stimulus'
 
 export default class extends Controller {
-  static targets = [ "output" ]
+  static targets = ['output', 'button']
 
-  connect() {
-    this.outputTarget.textContent = 'Hello, Stimulus!'
+  greet() {
+    this.outputTarget.textContent = 'Hello, this is a Rails 6.1 template with StimulusJS!';
+    this.buttonTarget.hidden = true;
   }
 }
