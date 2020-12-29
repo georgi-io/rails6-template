@@ -1,5 +1,5 @@
 <div data-controller="hello">
-  <div class="alert alert-primary" role="alert">
+  <div class="alert alert-primary" role="alert" data-hello-target="container">
     <%= button_tag 'Click me', class: 'btn btn-primary alert-link', 'data-hello-target' => 'button', 'data-action' => 'click->hello#greet' %>
     <span style="margin-left: 10px" data-hello-target="output"></span>
   </div>
