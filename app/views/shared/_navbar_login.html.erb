@@ -1,7 +1,11 @@
 <ul class="navbar-nav mr-auto">
-  <li class="nav-item">
-    <%= link_to 'Login', 'auth/auth0', method: :post, class: "nav-link" unless logged_in? %>
-  </li>
+  <% unless logged_in? %>
+    <li class="nav-item" data-turbo="false">
+      <form action="auth/auth0" method="post" data-turbo="false">
+        <%= button_to 'Login', 'auth/auth0', class: "btn btn-primary", data: { turbo: false } %>
+      </form>
+    </li>
+  <% end %>
   <% if logged_in? %>
     <li class="nav-item">
       <div class="dropdown dropleft">
