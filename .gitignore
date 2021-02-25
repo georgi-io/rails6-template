@@ -34,15 +34,12 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
-/.idea/workspace.xml
 
 /config/credentials/development.key
 
 /config/credentials/development~.key
 
 /config/credentials/test.key
-/.idea/dataSources.local.xml
-/.idea/dataSources.xml
 
 /config/credentials/production.key
-/.idea/dataSources
+/.idea/
